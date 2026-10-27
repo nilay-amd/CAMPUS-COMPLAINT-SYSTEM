@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusCare AI | Live Campus Grievance & SLA Transparency Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="public-nav">
+    <div class="nav-brand">
+      <div class="brand-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div>
+        <h1 class="brand-name">CampusCare AI</h1>
+        <span class="brand-tagline">Campus Grievance & SLA Transparency Hub</span>
+      </div>
+    </div>
+
+    <div class="nav-center-menu">
+      <a href="#analyticsSection" class="nav-link active">Live Analytics</a>
+      <a href="#clustersSection" class="nav-link">Cluster Tracking</a>
+      <a href="#liveComplaintsSection" class="nav-link">Public Complaints Board</a>
+    </div>
+
+    <div class="nav-actions">
+      <button type="button" class="btn-login-trigger" id="openLoginModalBtn">
+        <span class="login-icon">🔐</span> Sign In to Portal
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero & Live Transparency Announcement -->
+  <section class="hero-strip">
+    <div class="hero-content">
+      <div class="status-live-pill">
+        <span class="live-dot"></span> System Live & Ready
+      </div>
+      <h2>Real-Time Grievance Prioritization & SLA Tracking</h2>
+      <p class="hero-text">
+        Welcome to the central campus facilities transparency hub. This portal is freshly deployed and ready to track 
+        incoming maintenance requests, incident clusters, and resolution turnarounds once connected to the campus backend.
+      </p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 1: CAMPUS ANALYTICS (KPIs)
+       ========================================================= -->
+  <section class="analytics-container" id="analyticsSection">
+    <div class="section-heading">
+      <div>
+        <h3>Live Resolution & Campus Operations Analytics</h3>
+        <p class="section-sub">Dynamic indicators across hostel blocks, academic complexes, and campus laboratories.</p>
+      </div>
+      <span class="last-sync" id="syncTime">⚡ System Ready</span>
+    </div>
+
+    <div class="kpi-grid">
+      <!-- KPI 1 -->
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-label">Active Unresolved Issues</span>
+          <span class="kpi-badge neutral" id="kpiActiveBadge">Normal</span>
+        </div>
+        <div class="kpi-value text-primary" id="kpiActiveCount">0 Active</div>
+        <div class="kpi-footer">No open complaints awaiting technician triage</div>
+        <div class="kpi-bar"><div class="kpi-bar-fill bg-primary" id="kpiActiveBar" style="width: 0%;"></div></div>
+      </div>
+
+      <!-- KPI 2 -->
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-label">SLA Compliance Rate</span>
+          <span class="kpi-badge positive">Ready</span>
+        </div>
+        <div class="kpi-value text-success" id="kpiSlaRate">100%</div>
+        <div class="kpi-footer">Target response time commitments fully on track</div>
+        <div class="kpi-bar"><div class="kpi-bar-fill bg-success" style="width: 100%;"></div></div>
+      </div>
+
+      <!-- KPI 3 -->
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-label">Average Resolution Time</span>
+          <span class="kpi-badge neutral">Speed</span>
+        </div>
+        <div class="kpi-value" id="kpiAvgTime">--</div>
+        <div class="kpi-footer">Calculated dynamically once tickets are closed via OTP</div>
+        <div class="kpi-bar"><div class="kpi-bar-fill bg-warning" style="width: 0%;"></div></div>
+      </div>
+
+      <!-- KPI 4 -->
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-label">Merged Incident Clusters</span>
+          <span class="kpi-badge alert">Anti-Spam</span>
+        </div>
+        <div class="kpi-value text-purple" id="kpiClusterCount">0 Clusters</div>
+        <div class="kpi-footer">Duplicate reports unified to prevent maintenance queue spam</div>
+        <div class="kpi-bar"><div class="kpi-bar-fill bg-purple" style="width: 0%;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 2: CLUSTER TRACKING (EMPTY STATE FOR NEW SYSTEM)
+       ========================================================= -->
+  <section class="clusters-section" id="clustersSection">
+    <div class="section-heading">
+      <div>
+        <h3>⚡ Real-Time Cluster Tracking & Trending Campus Outages</h3>
+        <p class="section-sub">When multiple students report the same issue in a building or block, the system automatically groups them into one unified incident.</p>
+      </div>
+    </div>
+
+    <div class="clusters-grid" id="clustersGrid">
+      <!-- Rendered dynamically (shows clean empty state when 0 complaints) -->
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 3: PUBLIC COMPLAINTS BOARD (LIVE FEED)
+       ========================================================= -->
+  <section class="complaints-section" id="liveComplaintsSection">
+    <div class="complaints-top-bar">
+      <div>
+        <h3>Public Grievance Transparency Board</h3>
+        <p class="section-sub">Color-coded by priority level without numeric points. Open and transparent to the entire campus.</p>
+      </div>
+
+      <!-- Priority Legend -->
+      <div class="priority-legend">
+        <span class="legend-title">Priority Tiers:</span>
+        <span class="legend-pill tier-critical">🔴 Critical Hazard (&lt;4h)</span>
+        <span class="legend-pill tier-high">🟠 High Urgency (&lt;24h)</span>
+        <span class="legend-pill tier-medium">🔵 Medium (&lt;48h)</span>
+        <span class="legend-pill tier-low">🟢 Low / Routine (&lt;72h)</span>
+      </div>
+    </div>
+
+    <!-- Filters Strip -->
+    <div class="board-filters">
+      <div class="filter-pills" id="filterPills">
+        <button type="button" class="f-pill active" data-filter="all">All Issues (<span id="countAll">0</span>)</button>
+        <button type="button" class="f-pill f-critical" data-filter="Critical">🔴 Critical (<span id="countCritical">0</span>)</button>
+        <button type="button" class="f-pill f-high" data-filter="High">🟠 High Urgency (<span id="countHigh">0</span>)</button>
+        <button type="button" class="f-pill f-medium" data-filter="Medium">🔵 Medium (<span id="countMedium">0</span>)</button>
+        <button type="button" class="f-pill f-resolved" data-filter="Resolved">✅ Resolved (<span id="countResolved">0</span>)</button>
+      </div>
+
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="boardSearch" placeholder="Search by location, block, or keyword...">
+      </div>
+    </div>
+
+    <!-- Complaints Feed (Shows clean empty state if 0) -->
+    <div class="complaints-feed" id="publicComplaintsFeed">
+      <!-- Rendered dynamically via script.js -->
+    </div>
+  </section>
+
+  <!-- =========================================================
+       MODAL: ROLE-BASED LOGIN (STUDENT / FACULTY / STAFF)
+       ========================================================= -->
+  <div id="loginModal" class="modal-overlay" style="display: none;">
+    <div class="login-modal-card">
+      <div class="modal-top">
+        <div>
+          <h3>Sign In to CampusCare Portal</h3>
+          <p class="modal-subtext">Choose your campus role to open your dedicated management workspace</p>
+        </div>
+        <button type="button" class="modal-close" id="closeLoginModalBtn">&times;</button>
+      </div>
+
+      <!-- Role Selector Tabs -->
+      <div class="role-selector" role="tablist">
+        <button type="button" class="role-btn active" data-role="student">
+          <span class="r-icon">🎓</span>
+          <span class="r-name">Student</span>
+        </button>
+        <button type="button" class="role-btn" data-role="faculty">
+          <span class="r-icon">🏛️</span>
+          <span class="r-name">Faculty</span>
+        </button>
+        <button type="button" class="role-btn" data-role="staff">
+          <span class="r-icon">🛠️</span>
+          <span class="r-name">Staff / Admin</span>
+        </button>
+      </div>
+
+      <!-- Alert Message -->
+      <div id="loginAlert" class="alert-box" style="display: none;"></div>
+
+      <!-- Form -->
+      <form id="portalLoginForm" autocomplete="off">
+        <div class="input-block">
+          <label id="idInputLabel" for="userIdentifier">Student Roll / PRN Number</label>
+          <input type="text" id="userIdentifier" placeholder="e.g. 2024CS0148" required>
+        </div>
+
+        <div class="input-block">
+          <label id="emailInputLabel" for="userEmail">Campus Institutional Email</label>
+          <input type="email" id="userEmail" placeholder="student@campus.edu" required>
+        </div>
+
+        <div class="input-block">
+          <label for="userPassword">Password</label>
+          <input type="password" id="userPassword" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn-portal-submit" id="portalSubmitBtn">
+          <span class="btn-label">Access Student Workspace</span>
+          <span class="btn-spinner" style="display: none;"></span>
+        </button>
+      </form>
+
+      <!-- Quick Demo Auto-Fill -->
+      <div class="quick-demo-box">
+        <span class="demo-tag">⚡ One-Click Test Logins (Ready for Backend Auth):</span>
+        <div class="demo-pill-row">
+          <button type="button" class="btn-quick-fill" data-demo="student">Test as Student</button>
+          <button type="button" class="btn-quick-fill" data-demo="faculty">Test as Faculty</button>
+          <button type="button" class="btn-quick-fill" data-demo="staff">Test as Staff</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="api-service.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
